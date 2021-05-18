@@ -78,6 +78,18 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    // One To Many
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // One To Many
+    public function reactions()
+    {
+        return $this->hasMany(Reaction::class);
+    }
+
     // Many To Many
     public function enrolledCourses()
     {

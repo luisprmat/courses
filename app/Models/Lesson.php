@@ -33,4 +33,22 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    // One To One (Polymorphic)
+    public function resource()
+    {
+        return $this->morphOne(Resource::class, 'resourceable');
+    }
+
+    // One To Many (Polymorphic)
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    // One To Many (Polymorphic)
+    public function reactions()
+    {
+        return $this->morphMany(Reaction::class, 'reactionable');
+    }
 }
