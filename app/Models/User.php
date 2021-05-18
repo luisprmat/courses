@@ -83,4 +83,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class);
     }
+
+    // Many To Many
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class);
+    }
 }

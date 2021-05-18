@@ -20,6 +20,30 @@ class Course extends Model
         return $this->hasMany(Review::class);
     }
 
+    // One To Many
+    public function requirements()
+    {
+        return $this->hasMany(Requirement::class);
+    }
+
+    // One To Many
+    public function goals()
+    {
+        return $this->hasMany(Goal::class);
+    }
+
+    // One To Many
+    public function audiences()
+    {
+        return $this->hasMany(Audience::class);
+    }
+
+    // One To Many
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+
     // One To Many (inverse)
     public function teacher()
     {
