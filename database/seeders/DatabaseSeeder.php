@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Storage::deleteDirectory('courses');
+
+        Storage::makeDirectory('courses');
+
+        $this->truncateTables([
+            'images',
+            'courses',
+            'platforms',
+            'prices',
+            'categories',
+            'levels',
+            'users'
+        ]);
+
+        $this->call([
+            UserSeeder::class,
+            LevelSeeder::class,
+            CategorySeeder::class,
+            PriceSeeder::class,
+            PlatformSeeder::class,
+            CourseSeeder::class,
+        ]);
+    }
+
+    protected function truncateTables(array $tables)
+    {
+        // Disable checking of foreing keys
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+
+        foreach ($tables as $table) {
+            DB::table($table)->truncate();
+        }
+
+        // Activate checking of foreing keys
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }
