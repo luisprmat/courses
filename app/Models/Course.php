@@ -9,9 +9,22 @@ class Course extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews'];
+
     const DRAFT = 1;
     const REVISION = 2;
     const PUBLISHED = 3;
+
+    public function getRatingAttribute()
+    {
+        if ($this->reviews_count) {
+            return $this->reviews->avg('rating');
+        } else {
+            return 5;
+        }
+
+    }
 
     /** Relationships */
     // One To Many
