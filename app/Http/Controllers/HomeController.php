@@ -11,7 +11,8 @@ class HomeController extends Controller
     {
         $courses = Course::where('status', Course::PUBLISHED)
             ->latest('id')
-            ->get();
+            ->get()
+            ->take(12);
 
         return view('welcome', compact('courses'));
     }

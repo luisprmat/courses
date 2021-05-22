@@ -18,12 +18,12 @@ class Course extends Model
 
     public function getRatingAttribute()
     {
-        if ($this->reviews_count) {
-            return $this->reviews->avg('rating');
-        } else {
-            return 5;
-        }
+        return $this->reviews_count ? $this->reviews->avg('rating') : 5;
+    }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     /** Relationships */
