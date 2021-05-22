@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,21 @@ class Course extends Model
     public function getRatingAttribute()
     {
         return $this->reviews_count ? $this->reviews->avg('rating') : 5;
+    }
+
+    /** Query scopes */
+    public function scopeCategory(Builder $query, $category_id)
+    {
+        if ($category_id) {
+            return $query->where('category_id', $category_id);
+        }
+    }
+
+    public function scopeLevel(Builder $query, $level_id)
+    {
+        if ($level_id) {
+            return $query->where('level_id', $level_id);
+        }
     }
 
     public function getRouteKeyName()
