@@ -23,4 +23,11 @@ class CourseController extends Controller
 
         return view('courses.show', compact('course', 'similars'));
     }
+
+    public function enrolled(Course $course)
+    {
+        $course->students()->attach(auth()->id());
+
+        return redirect()->route('courses.status', $course);
+    }
 }
