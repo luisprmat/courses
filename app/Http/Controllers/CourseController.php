@@ -14,6 +14,13 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        return 'Aquí está la información del curso: ' . $course->title;
+        $similars = Course::where('category_id', $course->category_id)
+            ->where('id', '!=', $course->id)
+            ->where('status', Course::PUBLISHED)
+            ->latest('id')
+            ->take(5)
+            ->get();
+
+        return view('courses.show', compact('course', 'similars'));
     }
 }
