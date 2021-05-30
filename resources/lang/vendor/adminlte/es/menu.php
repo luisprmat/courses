@@ -4,7 +4,8 @@ return [
 
     'main_navigation'               => 'MENU PRINCIPAL',
     'blog'                          => 'Blog',
-    'pages'                         => 'Páginas',
+    'dashboard'                     => __('Dashboard'),
+    'roles'                         => 'Lista de Roles',
     'account_settings'              => 'AJUSTES DE LA CUENTA',
     'profile'                       => 'Perfil',
     'change_password'               => 'Cambiar Contraseña',
