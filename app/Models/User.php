@@ -61,6 +61,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function adminlte_image()
+    {
+        return $this->profile_photo_url;
+    }
+
     /** Relationships */
     // One To One
     public function profile()
