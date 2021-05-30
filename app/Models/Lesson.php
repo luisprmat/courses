@@ -9,6 +9,13 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
+    public function getCompletedAttribute()
+    {
+        return $this->users->contains(auth()->id());
+    }
+
     /** Relationships */
     // One To One
     public function description()
