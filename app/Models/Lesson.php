@@ -38,7 +38,7 @@ class Lesson extends Model
     // Many To Many
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     // One To One (Polymorphic)
