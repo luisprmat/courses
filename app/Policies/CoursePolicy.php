@@ -24,4 +24,9 @@ class CoursePolicy
     {
         return $course->students->contains($user->id);
     }
+
+    public function published(?User $user, Course $course)
+    {
+        return $course->status == Course::PUBLISHED;
+    }
 }
