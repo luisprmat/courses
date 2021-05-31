@@ -20,28 +20,28 @@ class DatabaseSeeder extends Seeder
         Storage::makeDirectory('courses');
 
         $this->truncateTables([
-            'model_has_permissions',
-            'model_has_roles',
-            'role_has_permissions',
-            'roles',
-            'permissions',
             'images',
             'courses',
             'platforms',
             'prices',
             'categories',
             'levels',
-            'users'
+            'users',
+            'model_has_permissions',
+            'model_has_roles',
+            'role_has_permissions',
+            'roles',
+            'permissions'
         ]);
 
         $this->call([
+            RolesAndPermissionsSeeder::class,
             UserSeeder::class,
             LevelSeeder::class,
             CategorySeeder::class,
             PriceSeeder::class,
             PlatformSeeder::class,
-            CourseSeeder::class,
-            RolesAndPermissionsSeeder::class
+            CourseSeeder::class
         ]);
     }
 

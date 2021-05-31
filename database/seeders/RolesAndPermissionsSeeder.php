@@ -24,7 +24,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'courses:show',
+            'name' => 'courses:view',
             'display_name' => 'Ver Cursos'
         ]);
 
@@ -38,11 +38,58 @@ class RolesAndPermissionsSeeder extends Seeder
             'display_name' => 'Eliminar Cursos'
         ]);
 
+        Permission::create([
+            'name' => 'roles:create',
+            'display_name' => 'Crear Roles'
+        ]);
+
+        Permission::create([
+            'name' => 'roles:view',
+            'display_name' => 'Ver Roles'
+        ]);
+
+        Permission::create([
+            'name' => 'roles:update',
+            'display_name' => 'Actualizar Roles'
+        ]);
+
+        Permission::create([
+            'name' => 'roles:destroy',
+            'display_name' => 'Eliminar Roles'
+        ]);
+
+        Permission::create([
+            'name' => 'users:view',
+            'display_name' => 'Ver Usuarios'
+        ]);
+
+        Permission::create([
+            'name' => 'users:update',
+            'display_name' => 'Editar Usuarios'
+        ]);
+
+        Permission::create([
+            'name' => 'view-dashboard',
+            'display_name' => 'Ver Panel'
+        ]);
+
         $admin = Role::create([
             'name' => 'admin',
             'display_name' => 'Administrador'
         ]);
 
         $admin->givePermissionTo(Permission::all());
+
+        $instructor = Role::create([
+            'name' => 'instructor',
+            'display_name' => 'Instructor'
+        ]);
+
+        $instructor->syncPermissions([
+            'courses:create',
+            'courses:view',
+            'courses:update',
+            'courses:destroy'
+        ]);
     }
 }
