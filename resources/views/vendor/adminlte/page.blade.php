@@ -41,7 +41,7 @@
                     @yield('content_header')
                     @if (session('info'))
                         <div class="alert alert-info mt-2" role="alert">
-                            <strong>¿Éxito!</strong> {{ session('info') }}
+                            <strong>¡Éxito!</strong> {{ session('info') }}
                         </div>
                     @endif
                 </div>

@@ -6,6 +6,7 @@ return [
     'blog'                          => 'Blog',
     'dashboard'                     => __('Dashboard'),
     'roles'                         => 'Lista de Roles',
+    'users'                         => 'Usuarios',
     'account_settings'              => 'AJUSTES DE LA CUENTA',
     'profile'                       => 'Perfil',
     'change_password'               => 'Cambiar Contraseña',
