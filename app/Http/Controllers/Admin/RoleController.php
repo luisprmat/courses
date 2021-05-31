@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -15,7 +17,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('admin.roles.index');
+        $roles = Role::all();
+
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -25,9 +29,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create', [
-            'role' => new Role
-        ]);
+        $permissions = Permission::all();
+        $role = new Role;
+
+        return view('admin.roles.create', compact('role', 'permissions'));
     }
 
     /**
@@ -38,7 +43,26 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles',
+            'display_name' => 'required',
+            'permissions' => 'required|array'
+        ], [
+            'permissions.required' => 'Debes seleccionar por lo menos un permiso'
+        ], [
+            'name' => 'identificador',
+            'display_name' => 'nombre'
+        ]);
+
+        $role = Role::create([
+            'name' => $request->name,
+            'display_name' => $request->display_name
+        ]);
+
+        $role->permissions()->attach($request->permissions);
+
+        return redirect()->route('admin.roles.index')
+            ->with('info', 'El rol se creó satisfactoriamente');
     }
 
     /**
@@ -60,7 +84,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('admin.roles.edit', compact('role'));
+        $permissions = Permission::all();
+
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -72,7 +98,26 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'name' => ['required', Rule::unique('roles')->ignore($role->id)],
+            'display_name' => 'required',
+            'permissions' => 'required|array'
+        ], [
+            'permissions.required' => 'Debes seleccionar por lo menos un permiso'
+        ], [
+            'name' => 'identificador',
+            'display_name' => 'nombre'
+        ]);
+
+        $role->update([
+            'name' => $request->name,
+            'display_name' => $request->display_name
+        ]);
+
+        $role->permissions()->sync($request->permissions);
+
+        return redirect()->route('admin.roles.edit', $role)
+            ->with('info', 'El rol se actualizó correctamente');
     }
 
     /**
@@ -83,6 +128,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+
+        return redirect()->route('admin.roles.index')
+            ->with('info', 'El rol se eliminó satisfactoriamente');
     }
 }

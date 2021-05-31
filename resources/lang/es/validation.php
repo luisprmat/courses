@@ -176,6 +176,7 @@ return [
         'name'                  => 'nombre',
         'password'              => 'contraseña',
         'password_confirmation' => 'confirmación de la contraseña',
+        'permissions'           => 'permisos',
         'phone'                 => 'teléfono',
         'price'                 => 'precio',
         'role'                  => 'rol',
