@@ -1,3 +1,5 @@
+{!! Form::hidden('user_id', auth()->id()) !!}
+
 <div class="mb-4">
     {!! Form::label('title', 'Título del curso:') !!}
     {!! Form::text('title', null, ['class' => ($errors->has('title') ? 'form-input-error' : 'form-input').' block w-full mt-1']) !!}

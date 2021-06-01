@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Instructor;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
+use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
@@ -106,7 +107,35 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'slug' => ['required', Rule::unique('courses')->ignore($course)],
+            'subtitle' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+            'user_id' => 'required'
+        ], [
+            'category_id.required' => 'Debes seleccionar una categoría',
+            'level_id.required' => 'Debes seleccionar un nivel',
+            'price_id.required' => 'Debes seleccionar un precio',
+        ]);
+
+        $course->update($validated);
+
+        if ($request->file('file')) {
+            $url = Storage::put('courses', $request->file('file'));
+
+            if ($course->image) {
+                Storage::delete($course->image->url);
+                $course->image->update(compact('url'));
+            } else {
+                $course->image()->create(compact('url'));
+            }
+        }
+
+        return redirect()->route('instructor.courses.edit', $course);
     }
 
     /**
