@@ -1,8 +1,9 @@
 <div class="container py-8">
     <x-table-responsive>
         {{-- Search --}}
-        <div class="px-4 py-4">
-            <x-jet-input wire:keydown="resetPage" wire:model="search" class="w-full" type="text" placeholder="Ingrese el nombre de un curso ..." />
+        <div class="px-4 py-4 flex">
+            <x-jet-input wire:keydown="resetPage" wire:model="search" class="flex-1" type="text" placeholder="Ingrese el nombre de un curso ..." />
+            <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear nuevo curso</a>
         </div>
 
         @if ($courses->count())
