@@ -71,6 +71,9 @@
 
     <div>
         <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae corrupti qui pariatur quas eius cupiditate vel necessitatibus? Soluta sint facere dolor eligendi provident delectus, molestias maiores, quibusdam accusamus excepturi officiis!</p>
-        {!! Form::file('file', ['class' => 'form-input w-full', 'id' => 'file']) !!}
+        {!! Form::file('file', ['class' => 'form-input w-full'.($errors->has('file') ? ' border-red-600': ''), 'id' => 'file', 'accept' => 'image/*']) !!}
+        @error('file')
+            <strong class="text-xs text-red-600">{{ $message }}</strong>
+        @enderror
     </div>
 </div>

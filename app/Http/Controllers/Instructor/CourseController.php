@@ -53,7 +53,8 @@ class CourseController extends Controller
             'category_id' => 'required',
             'level_id' => 'required',
             'price_id' => 'required',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'file' => 'image'
         ], [
             'category_id.required' => 'Debes seleccionar una categoría',
             'level_id.required' => 'Debes seleccionar un nivel',
@@ -115,7 +116,8 @@ class CourseController extends Controller
             'category_id' => 'required',
             'level_id' => 'required',
             'price_id' => 'required',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'file' => 'image'
         ], [
             'category_id.required' => 'Debes seleccionar una categoría',
             'level_id.required' => 'Debes seleccionar un nivel',
