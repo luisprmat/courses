@@ -6,11 +6,12 @@
 
                 <hr class="mt-2 mb-6">
 
-                {!! Form::open(['route' => 'instructor.courses.store', 'files' => true]) !!}
+                {!! Form::open(['route' => 'instructor.courses.store', 'files' => true, 'autocomplete' => 'off']) !!}
+                    {!! Form::hidden('user_id', auth()->id()) !!}
                     @include('instructor.courses.fields')
 
                     <div class="flex justify-end">
-                        {!! Form::submit('Crear nuevo curso', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Crear nuevo curso', ['class' => 'btn btn-primary cursor-pointer']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>

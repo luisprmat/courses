@@ -183,6 +183,7 @@ return [
         'second'                => 'segundo',
         'sex'                   => 'sexo',
         'subject'               => 'asunto',
+        'subtitle'              => 'subtítulo',
         'terms'                 => 'términos',
         'time'                  => 'hora',
         'title'                 => 'título',

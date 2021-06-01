@@ -33,10 +33,17 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full"
-                                            src="{{ Storage::url($course->image->url) }}"
-                                            alt="{{ $course->title }}"
-                                        >
+                                        @isset($course->image)
+                                            <img class="h-10 w-10 rounded-full object-cover object-center"
+                                                src="{{ Storage::url($course->image->url) }}"
+                                                alt="{{ $course->title }}"
+                                            >
+                                        @else
+                                            <img class="h-10 w-10 rounded-full object-cover object-center"
+                                                src="{{ asset('img/cursos/default.jpg') }}"
+                                                alt="{{ $course->title }}"
+                                            >
+                                        @endisset
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">

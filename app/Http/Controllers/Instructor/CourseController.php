@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -28,9 +29,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id');
-        $levels = Level::pluck('name', 'id');
-        $prices = Price::pluck('name', 'id');
+        $categories = Category::pluck('name', 'id')->prepend('Seleccione una categoría', '');
+        $levels = Level::pluck('name', 'id')->prepend('Seleccione un nivel', '');
+        $prices = Price::pluck('name', 'id')->prepend('Seleccione un precio', '');
 
         return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
     }
@@ -43,7 +44,31 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:courses',
+            'subtitle' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+            'user_id' => 'required'
+        ], [
+            'category_id.required' => 'Debes seleccionar una categoría',
+            'level_id.required' => 'Debes seleccionar un nivel',
+            'price_id.required' => 'Debes seleccionar un precio',
+        ]);
+
+        $course = Course::create($validated);
+
+        if ($request->file('file')) {
+            $url = Storage::put('courses', $request->file('file'));
+
+            $course->image()->create(compact('url'));
+        }
+
+
+        return redirect()->route('instructor.courses.edit', $course);
     }
 
     /**
