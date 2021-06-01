@@ -40,8 +40,11 @@
                 <div class="{{ config('adminlte.classes_content_header') ?: $def_container_class }}">
                     @yield('content_header')
                     @if (session('info'))
-                        <div class="alert alert-info mt-2" role="alert">
+                        <div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
                             <strong>¡Éxito!</strong> {{ session('info') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
                 </div>
