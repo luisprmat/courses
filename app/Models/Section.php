@@ -9,6 +9,8 @@ class Section extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'course_id'];
+
     /** Relationships */
     // One To Many
     public function lessons()
