@@ -9,6 +9,8 @@ class Description extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     /** Relationships */
     // One To One (inverse)
     public function lesson()
