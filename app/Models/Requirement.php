@@ -9,6 +9,8 @@ class Requirement extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     /** Relationships */
     // One To Many (inverse)
     public function course()
