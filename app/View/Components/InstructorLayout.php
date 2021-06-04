@@ -2,18 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\Course;
 use Illuminate\View\Component;
 
 class InstructorLayout extends Component
 {
+    public $course;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Course $course)
     {
-        //
+        $this->course = $course;
     }
 
     /**
