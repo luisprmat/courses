@@ -29,4 +29,9 @@ class CoursePolicy
     {
         return $course->status == Course::PUBLISHED;
     }
+
+    public function dictated(User $user, Course $course)
+    {
+        return $course->user_id == $user->id;
+    }
 }

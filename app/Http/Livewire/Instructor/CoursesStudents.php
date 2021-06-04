@@ -3,18 +3,21 @@
 namespace App\Http\Livewire\Instructor;
 
 use App\Models\Course;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class CoursesStudents extends Component
 {
-    use WithPagination;
+    use AuthorizesRequests ,WithPagination;
 
     public $course, $search;
 
     public function mount(Course $course)
     {
         $this->course = $course;
+
+        $this->authorize('dictated', $course);
     }
 
     public function updatingSearch()
