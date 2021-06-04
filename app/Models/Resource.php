@@ -9,6 +9,8 @@ class Resource extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['url'];
+
     /** Relationships */
     // Polymorphic
     public function resourceable()
