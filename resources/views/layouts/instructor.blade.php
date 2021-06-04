@@ -40,8 +40,8 @@
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.goals', $course) border-indigo-400 text-indigo-700 bg-indigo-50 @else border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 @endrouteIs pl-2 transition">
                             <a href="{{ route('instructor.courses.goals', $course) }}">Metas del curso</a>
                         </li>
-                        <li class="leading-7 mb-1 border-l-4 border-transparent pl-2">
-                            <a href="">Estudiantes</a>
+                        <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 text-indigo-700 bg-indigo-50 @else border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 @endrouteIs pl-2 transition">
+                            <a href="{{ route('instructor.courses.students', $course) }}">Estudiantes</a>
                         </li>
                     </ul>
                 </aside>
