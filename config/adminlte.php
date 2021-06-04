@@ -85,7 +85,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
 
@@ -254,11 +254,11 @@ return [
             'can'         => 'users:view',
             'active'      => ['admin/users*']
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'course_options'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text'   => 'pending_to_approval',
+            'route'  => 'admin.courses.index',
+            'icon'   => 'far fa-fw fa-question-circle',
         ],
         [
             'text' => 'change_password',
