@@ -9,6 +9,8 @@ class Price extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'value'];
+
     /** Relationships */
     // One To Many
     public function course()

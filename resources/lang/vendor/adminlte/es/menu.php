@@ -11,6 +11,7 @@ return [
     'pending_to_approval'           => 'Pendientes de aprobación',
     'categories'                    => 'Categorías',
     'levels'                        => 'Niveles',
+    'prices'                        => 'Precios',
     'change_password'               => 'Cambiar Contraseña',
     'multilevel'                    => 'Multi Nivel',
     'level_one'                     => 'Nivel 1',

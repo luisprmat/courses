@@ -189,6 +189,7 @@ return [
         'time'                  => 'hora',
         'title'                 => 'título',
         'username'              => 'usuario',
+        'value'                 => 'valor',
         'year'                  => 'año',
     ],
 ];
