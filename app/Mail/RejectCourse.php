@@ -8,13 +8,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ApprovedCourse extends Mailable
+class RejectCourse extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $course;
 
-    public $subject = 'Curso Aprobado';
+    public $subject = 'Curso Rechazado';
 
     /**
      * Create a new message instance.
@@ -33,6 +33,6 @@ class ApprovedCourse extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mails.approved-course');
+        return $this->markdown('mails.reject-course');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovedCourse;
+use App\Mail\RejectCourse;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -39,5 +40,26 @@ class CourseController extends Controller
         Mail::to($course->teacher->email)->queue($mail);
 
         return redirect()->route('admin.courses.index')->with('info', 'El curso se publicó con éxito');
+    }
+
+    public function observation(Course $course)
+    {
+        return view('admin.courses.observation', compact('course'));
+    }
+
+    public function reject(Request $request, Course $course)
+    {
+        $request->validate([
+            'body' => 'required|min:5'
+        ]);
+
+        $course->observation()->create(['body' => $request->body]);
+
+        $course->status = Course::DRAFT;
+        $course->save();
+
+        Mail::to($course->teacher->email)->queue(new RejectCourse($course));
+
+        return redirect()->route('admin.courses.index')->with('info', 'El curso se rechazó con éxito');
     }
 }

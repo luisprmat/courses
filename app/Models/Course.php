@@ -43,6 +43,12 @@ class Course extends Model
     }
 
     /** Relationships */
+    // One To One
+    public function observation()
+    {
+        return $this->hasOne(Observation::class);
+    }
+
     // One To Many
     public function reviews()
     {

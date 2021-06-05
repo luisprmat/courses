@@ -9,7 +9,7 @@ Para **Course Coders** es un placer informarle que su curso
 @endcomponent
 ha sido aprobado y publicado.
 
-@component('mail::button', ['url' => route('courses.show', $course)])
+@component('mail::button', ['url' => route('instructor.courses.curriculum', $course)])
 Ver curso
 @endcomponent
 
