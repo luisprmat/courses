@@ -3,8 +3,8 @@
 @section('title', 'Admin Cursos')
 
 @section('content_header')
-    <a class="btn btn-secondary float-right" href="{{ route('admin.categories.create') }}">Nueva categoría</a>
-    <h1>Lista de Categorías</h1>
+    <a class="btn btn-secondary float-right" href="{{ route('admin.levels.create') }}">Crear nivel</a>
+    <h1>Lista de niveles</h1>
 @stop
 
 @section('content')
@@ -20,15 +20,15 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($levels as $level)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $level->id }}</td>
+                            <td>{{ $level->name }}</td>
                             <td width="10px">
-                                <a class="btn btn-primary btn-sm" href="{{ route('admin.categories.edit', $category) }}">Editar</a>
+                                <a href="{{ route('admin.levels.edit', $level) }}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
                             <td width="10px">
-                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
+                                <form action="{{ route('admin.levels.destroy', $level) }}" method="POST">
                                     @csrf @method('DELETE')
                                     <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
                                 </form>
@@ -39,4 +39,12 @@
             </table>
         </div>
     </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
 @stop

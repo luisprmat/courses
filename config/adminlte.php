@@ -261,6 +261,11 @@ return [
             'icon'   => 'fas fa-fw fa-cogs',
         ],
         [
+            'text'   => 'levels',
+            'route'  => 'admin.levels.index',
+            'icon'   => 'fas fa-fw fa-chart-line',
+        ],
+        [
             'text'   => 'pending_to_approval',
             'route'  => 'admin.courses.index',
             'icon'   => 'far fa-fw fa-question-circle',

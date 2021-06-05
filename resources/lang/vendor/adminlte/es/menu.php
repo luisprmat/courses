@@ -10,6 +10,7 @@ return [
     'course_options'                => 'OPCIONES DE CURSOS',
     'pending_to_approval'           => 'Pendientes de aprobación',
     'categories'                    => 'Categorías',
+    'levels'                        => 'Niveles',
     'change_password'               => 'Cambiar Contraseña',
     'multilevel'                    => 'Multi Nivel',
     'level_one'                     => 'Nivel 1',
