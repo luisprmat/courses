@@ -9,6 +9,8 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['comment', 'rating', 'user_id'];
+
     /** Relationships */
     // One To Many (inverse)
     public function user()
