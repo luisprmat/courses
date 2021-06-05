@@ -256,6 +256,11 @@ return [
         ],
         ['header' => 'course_options'],
         [
+            'text'   => 'categories',
+            'route'  => 'admin.categories.index',
+            'icon'   => 'fas fa-fw fa-cogs',
+        ],
+        [
             'text'   => 'pending_to_approval',
             'route'  => 'admin.courses.index',
             'icon'   => 'far fa-fw fa-question-circle',

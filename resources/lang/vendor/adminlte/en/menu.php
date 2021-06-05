@@ -7,6 +7,7 @@ return [
     'pages'                         => 'Pages',
     'course_options'                => 'COURSES OPTIONS',
     'pending_to_approval'           => 'Pending to approval',
+    'categories'                    => 'Categories',
     'change_password'               => 'Change Password',
     'multilevel'                    => 'Multi Level',
     'level_one'                     => 'Level 1',
