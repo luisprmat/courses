@@ -63,7 +63,7 @@
 
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900 flex items-center">
-                                    {{ $course->rating }}
+                                    {{ number_format($course->rating, 1) }}
                                     <ul class="flex text-sm ml-2">
                                         <li class="mr-1">
                                             <i class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray'}}-400"></i>
