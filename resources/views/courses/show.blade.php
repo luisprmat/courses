@@ -11,7 +11,7 @@
                 <p class="mb-2"><i class="fas fa-chart-line fa-fw"></i> Nivel: {{ $course->level->name }}</p>
                 <p class="mb-2"><i class="fab fa-buffer fa-fw"></i> Categoría: {{ $course->category->name }}</p>
                 <p class="mb-2"><i class="fas fa-users fa-fw"></i> Matriculados: {{ $course->students_count }}</p>
-                <p><i class="far fa-star fa-fw"></i> Calificación: {{ $course->rating }}</p>
+                <p><i class="far fa-star fa-fw"></i> Calificación: {{ number_format($course->rating, 1) }}</p>
             </div>
         </div>
     </section>

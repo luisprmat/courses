@@ -106,7 +106,7 @@ class Course extends Model
     // Many To Many
     public function students()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     // One To One (Polymorphic)
